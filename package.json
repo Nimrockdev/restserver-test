@@ -1,0 +1,26 @@
+{
+    "name": "restserver-test",
+    "version": "1.0.0",
+    "description": "npm init npm i --save yargs",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.19.0",
+        "express": "^4.17.1",
+        "save": "^2.4.0",
+        "yargs": "^13.2.4"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jsg8405/restserver-test.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jsg8405/restserver-test/issues"
+    },
+    "homepage": "https://github.com/jsg8405/restserver-test#readme"
+}
