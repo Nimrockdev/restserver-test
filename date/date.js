@@ -23,13 +23,14 @@ var getTimeServiceData = function() {
 
     var now = moment();
 
-    console.log(moment.duration(oldServiceData - now).humanize());
-    console.log(now.diff(oldServiceData, 'seconds'));
+    // console.log(moment.duration(oldServiceData - now).humanize());
+    // console.log(now.diff(oldServiceData, 'seconds'));
 
     TimeServiceData.id = 'RestServer-test';
     TimeServiceData.duration = moment.duration(oldServiceData - now).humanize();
     TimeServiceData.timeInit = oldServiceData.format('YYYY-MM-DD hh:mm:ss');
 
+    console.log(TimeServiceData);
     return TimeServiceData;
 }
 
