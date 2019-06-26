@@ -15,7 +15,7 @@ let salarios = [
     { id: 2, salario: 2000 }
 ];
 
-
+let direccion = { dir: '', lat: 0, lng: 0 };
 
 let getInfo = async(direccion) => {
     try {
@@ -52,31 +52,28 @@ app.get('/salarios', function(req, res) {
 });
 
 app.get('/getTimeServiceData', function(req, res) {
-
     res.json(date.getTimeServiceData());
 });
 
+app.get('/weather', function(req, res) {
+    res.json('weather');
+});
 
+app.get('/location', function(req, res) {
+    let location = req.query.location || 'error';
 
+    if (location != 'error') {
 
+        lugar.getLugar(location).then(mensaje => {
+            // console.log(mensaje);
+            res.json(mensaje);
+        }).catch(e => {
+            console.log(Error, e);
+            res.json(e);
+        })
 
+    } else {
+        respuesta = 'The specified location is erroneous';
+    }
 
-
-
-
-
-/*Deprecated*/
-// getInfo(argv.direccion)
-//     .then(mensaje => console.log(mensaje))
-//     .catch(e => console.log(e));
-// const argv = require('yargs').options({
-//     direccion: {
-//         alias: 'd',
-//         desc: 'Dirección de la ciudad para obtener el clima',
-//         demand: true
-//     }
-// }).argv;
-
-// getInfo(argv.direccion)
-//     .then(mensaje => console.log(mensaje))
-//     .catch(e => console.log(e));
+});
