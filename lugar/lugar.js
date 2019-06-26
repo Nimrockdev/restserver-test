@@ -1,9 +1,9 @@
 const axios = require('axios');
 
 const getLugarLatLng = async(dir) => {
-
+    console.log(dir);
     const encodedUlr = encodeURI(dir);
-
+    console.log(dir);
     const instance = axios.create({
         baseURL: `https://devru-latitude-longitude-find-v1.p.rapidapi.com/latlon.php?location=${ encodedUlr }`,
         headers: { 'X-RapidAPI-Key': '30e05993bemsh63158fa139412a4p1ee62ajsn03f39c49ccd9' }
@@ -20,9 +20,9 @@ const getLugarLatLng = async(dir) => {
     const lat = data.lat;
     const lng = data.lon;
 
-    console.log('Dirección: ' + direccion);
-    console.log('Latitud: ' + lat);
-    console.log('Longitud: ' + lng);
+    // console.log('Dirección: ' + direccion);
+    // console.log('Latitud: ' + lat);
+    // console.log('Longitud: ' + lng);
 
     return {
         direccion,
@@ -30,24 +30,16 @@ const getLugarLatLng = async(dir) => {
         lng
     }
 
-    // let encodeURL = encodeURI(direccion);
-    // let resp = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURL}&key=AIzaSyDyJPPlnIMOLp20Ef1LlTong8rYdTnaTXM`)
+}
 
-    // if (resp.data.status === 'ZERO_RESULTS') {
-    //     throw new Error(`No se han encontrado resultados para ${direccion}`)
-    // }
+let getLugar = async(location) => {
 
-    // let location = resp.data.results[0];
-    // let coordenadas = location.geometry.location;
-
-    // return {
-    //     direccion: location.formatted_address,
-    //     latitud: coordenadas.lat,
-    //     longitud: coordenadas.lng
-    // }
-
+    let localizacion = await getLugarLatLng(location);
+    // console.log(localizacion);
+    return localizacion;
 }
 
 module.exports = {
-    getLugarLatLng
+    getLugarLatLng,
+    getLugar
 }
