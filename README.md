@@ -5,6 +5,7 @@ npm i --save yargs
 
 Instalar con ```npm install```
 npm install axios --save
+npm i --save moment
 
 #Ejemplos
 ```
