@@ -8,13 +8,17 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // soporte para bodies codificados en jsonsupport
 app.use(bodyParser.urlencoded({ extended: true })); // soporte para bodies codificados
 
-const argv = require('yargs').options({
-    direccion: {
-        alias: 'd',
-        desc: 'Dirección de la ciudad para obtener el clima',
-        demand: true
-    }
-}).argv;
+// const argv = require('yargs').options({
+//     direccion: {
+//         alias: 'd',
+//         desc: 'Dirección de la ciudad para obtener el clima',
+//         demand: true
+//     }
+// }).argv;
+
+// getInfo(argv.direccion)
+//     .then(mensaje => console.log(mensaje))
+//     .catch(e => console.log(e));
 
 let getInfo = async(direccion) => {
     try {
@@ -27,6 +31,10 @@ let getInfo = async(direccion) => {
         return (`No se puede determinar el clima para ${direccion}`);
     }
 }
+
+getInfo(argv.direccion)
+    .then(mensaje => console.log(mensaje))
+    .catch(e => console.log(e));
 
 getInfo(argv.direccion)
     .then(mensaje => console.log(mensaje))
