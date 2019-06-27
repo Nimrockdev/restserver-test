@@ -89,7 +89,7 @@ let config = {
         location: "Castelldefels",
     }
 }
-axios.use(allowCrossDomain)
+
 boton.addEventListener('click', function() {
     loading.style.display = 'block';
     axios.get('https://restserver-test-jsg.herokuapp.com/location?location=Castelldefels', {
