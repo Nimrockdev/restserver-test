@@ -47,7 +47,7 @@ app.listen(port, () => {
 });
 
 app.get('/hw', function(req, res) {
-    res.json('Hello World, app developed in node! Enviroment: ' + NODE_ENV);
+    res.json('Hello World, app developed in node! Enviroment: ' + NODE_ENV + ' in port: ' + port);
 });
 
 app.get('/time', function(req, res) {
