@@ -13,11 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // soporte para bodies codif
 let direccion = { dir: '', lat: 0, lng: 0 };
 
 /*Puerto*/
-process.env.PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 /*Entorno*/
-process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
-console.log(process.env.NODE_ENV);
+const NODE_ENV = process.env.NODE_ENV || 'dev';
 
 let getInfo = async(direccion) => {
     try {
@@ -42,13 +41,13 @@ let getInfo = async(direccion) => {
 //     date.initServiceData();
 // });
 
-app.listen(process.env.PORT, () => {
-    console.log('Listening port: ', process.env.PORT);
+app.listen(port, () => {
+    console.log('Listening port: ', port);
     date.initServiceData();
 });
 
 app.get('/hw', function(req, res) {
-    res.json('Hello World, app developed in node! Enviroment: ' + process.env.NODE_ENV);
+    res.json('Hello World, app developed in node! Enviroment: ' + NODE_ENV);
 });
 
 app.get('/time', function(req, res) {
