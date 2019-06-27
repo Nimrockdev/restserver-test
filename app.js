@@ -43,6 +43,7 @@ let getInfo = async(direccion) => {
 //     date.initServiceData();
 // });
 
+/*Evita el rechazo en la respuesta, data=''*/
 var cors = require('cors');
 app.use(cors());
 
