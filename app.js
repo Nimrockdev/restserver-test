@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // soporte para bodies codificados en jsonsupport
 app.use(bodyParser.urlencoded({ extended: true })); // soporte para bodies codificados
 
+app.use(allowCrossDomain);
+
 let direccion = { dir: '', lat: 0, lng: 0 };
 
 /*Puerto*/
