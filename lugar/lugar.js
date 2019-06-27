@@ -1,9 +1,7 @@
 const axios = require('axios');
 
 const getLugarLatLng = async(dir) => {
-    console.log(dir);
     const encodedUlr = encodeURI(dir);
-    console.log(dir);
     const instance = axios.create({
         baseURL: `https://devru-latitude-longitude-find-v1.p.rapidapi.com/latlon.php?location=${ encodedUlr }`,
         headers: { 'X-RapidAPI-Key': '30e05993bemsh63158fa139412a4p1ee62ajsn03f39c49ccd9' }
@@ -33,9 +31,7 @@ const getLugarLatLng = async(dir) => {
 }
 
 let getLugar = async(location) => {
-
     let localizacion = await getLugarLatLng(location);
-    // console.log(localizacion);
     return localizacion;
 }
 
