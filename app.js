@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // soporte para bodies codificados en jsonsupport
 app.use(bodyParser.urlencoded({ extended: true })); // soporte para bodies codificados
 
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 
 let direccion = { dir: '', lat: 0, lng: 0 };
 
@@ -42,6 +42,12 @@ let getInfo = async(direccion) => {
 //     console.log('Listening port: ', 3000);
 //     date.initServiceData();
 // });
+
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 
 app.listen(port, () => {
     console.log('Listening port: ', port);
