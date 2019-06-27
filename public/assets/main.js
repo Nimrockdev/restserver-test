@@ -98,9 +98,9 @@ boton.addEventListener('click', function() {
         .then(function(res) {
             if (res.status == 200) {
 
-                console.log(res);
+                console.log(res.data);
 
-                mensaje.innerHTML = res.data;
+                mensaje.innerHTML = JSON.stringify(res.data, undefined, 2);
             }
             console.log(res);
         })
