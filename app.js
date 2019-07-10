@@ -5,7 +5,7 @@ const persistent = require('./data/persistent');
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-
+const products = require('./routes/products');
 
 app.use(bodyParser.json()); // soporte para bodies codificados en jsonsupport
 app.use(bodyParser.urlencoded({ extended: true })); // soporte para bodies codificados
@@ -122,4 +122,13 @@ app.get('/weather', function(req, res) {
         res.send(respuesta);
     }
 
+});
+
+app.get('/products', function(req, res) {
+
+
+
+
+
+    res.json(products.allProducts);
 });
