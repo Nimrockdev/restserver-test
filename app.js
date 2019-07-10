@@ -5,7 +5,13 @@ const persistent = require('./data/persistent');
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-const products = require('./routes/products');
+
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+let Product = require('./models/products');
+
+
+require('./config/config.js');
 
 app.use(bodyParser.json()); // soporte para bodies codificados en jsonsupport
 app.use(bodyParser.urlencoded({ extended: true })); // soporte para bodies codificados
@@ -32,21 +38,15 @@ let getInfo = async(direccion) => {
     }
 }
 
-/*call old*/
-// getInfo(argv.direccion)
-//     .then(mensaje => console.log(mensaje))
-//     .catch(e => console.log(e));
-
-
-// app.listen(3000, () => {
-//     console.log('Listening port: ', 3000);
-//     date.initServiceData();
-// });
-
 /*Evita el rechazo en la respuesta, data=''*/
 var cors = require('cors');
 app.use(cors());
 
+mongoose.connect(process.env.URLDB, (err, res) => {
+
+    if (err) throw err;
+    console.log('BD conectada');
+});
 
 app.listen(port, () => {
     console.log('Listening port: ', port);
@@ -124,11 +124,29 @@ app.get('/weather', function(req, res) {
 
 });
 
-app.get('/products', function(req, res) {
+//Obtener todos los productos
+app.get('/products', (req, res) => {
 
+    let desde = req.query.desde || 0;
+    desde = Number(desde);
 
+    Product.find({ disponible: true })
+        .skip(desde)
+        .limit(5)
+        // .populate('usuario', 'nombre email')
+        // .populate('categoria', 'descripcion')
+        .exec((err, productos) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                })
+            };
 
+            res.json({
+                ok: true,
+                productos
+            });
 
-
-    res.json(products.allProducts);
+        })
 });

@@ -7,13 +7,12 @@ Instalar con ```npm install```
 npm install axios --save
 npm i --save moment
 
-#Ejemplos
-```
-node app -d Madrid España
-```
 
 # Librerias
 request o axios(utiliza promesas)
+npm i mongoose
+npm i mongoose-unique-validator --save  
+
 
 #git 
 git add .
