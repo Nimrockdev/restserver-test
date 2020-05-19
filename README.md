@@ -17,7 +17,7 @@ npm i mongoose-unique-validator --save
 #git 
 git add .
 git commit -m "Commit inicial"
-git remote add origin https://github.com/jsg8405/restserver-test.git
+git remote add origin https://github.com/Nimrockdev/restserver-test.git
 git  push -u origin master
 git tag -a v1.0.0 -m "Tag 1"
 git push --tags
